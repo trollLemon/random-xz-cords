@@ -7,9 +7,9 @@
 
 #define MIN_DISTANCE 3000
 #define MAP_WIDTH 25
-typedef std::vector<std::pair<long, long>> _data;
+typedef std::vector<std::pair<long, long>> t_data;
 
-bool verifyPoints(_data points, std::pair<long, long> point) {
+bool verifyPoints(t_data points, std::pair<long, long> point) {
 
   if (points.empty()){
     return true;
@@ -25,14 +25,14 @@ bool verifyPoints(_data points, std::pair<long, long> point) {
       long dX = x2 - x1;
       long dY = y2 - y1;
 
-      if (sqrt(dY * dY + dX * dX) < MIN_DISTANCE) {
+      if (sqrt(dY * dY + dX * dX) <= MIN_DISTANCE) {
         return false;
       }
     }
   return true;
 }
 
-_data generatePoints(int size, long upperXBound, long lowerXBound,
+t_data generatePoints(int size, long upperXBound, long lowerXBound,
                      long upperZBound, long lowerZBound) {
 
   std::random_device r; // a seed source for the random number engine
@@ -45,7 +45,7 @@ _data generatePoints(int size, long upperXBound, long lowerXBound,
   std::uniform_int_distribution<> zdistrib(lowerZBound, upperZBound);
 
   int i = 0;
-  _data randPoints;
+  t_data randPoints;
   while (i < size) {
 
     long x = xdistrib(gen);
@@ -61,7 +61,7 @@ _data generatePoints(int size, long upperXBound, long lowerXBound,
   return randPoints;
 }
 
-void printMap(_data points, long x, long z, long offsetX, long offsetZ) {
+void printMap(t_data points, long x, long z, long offsetX, long offsetZ) {
 
   std::vector<char> width(z, '.');
 
@@ -105,7 +105,7 @@ int main() {
   long relativeZ = 25;
 
 
-  _data points = generatePoints(size, upX, loX, upZ, loZ);
+  t_data points = generatePoints(size, upX, loX, upZ, loZ);
   printMap(points, relativeX, relativeZ, offsetX, offsetZ);
 
   return 0;
