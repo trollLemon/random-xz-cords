@@ -137,7 +137,7 @@ void printMap(t_data points, long x, long z, long offsetX, long offsetZ) {
   
   std::cout << "X and Z Coordinates::::::" << std::endl;
   for (auto coord : points) {
-    std::cout << coord.first << ", " << coord.second << std::endl;
+    std::cout << "(" << coord.first << ", " << coord.second<< ")" << std::endl;
     
     //scale points 
     long currX = (coord.first + offsetX) / divisorX;
@@ -145,9 +145,14 @@ void printMap(t_data points, long x, long z, long offsetX, long offsetZ) {
 
     map[currX][currZ] = 'X'; //mark this point with a chest marker
   }
-    
+  std::cout << std::endl; 
 // print the map
   std::cout << "Relative positions:::::::::" << std::endl;
+  std::cout << "_____________________" << std::endl;
+  std::cout << "|Key: " << std::endl;
+  std::cout << "| . : " << divisorX << " blocks" << std::endl;
+  std::cout << "| X : " << "Chest" << std::endl;
+  std::cout << "| O : " << "Spawn" << std::endl;
   for (auto line : map) {
 
     for (char c : line) {
