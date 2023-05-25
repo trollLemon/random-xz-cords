@@ -32,7 +32,7 @@ bool verifyPoints(t_data points, std::pair<long, long> point) {
 
     //compare point to every other point in the list
     //we can do this in linear time
-    for (int j = 0; j < points.size(); j++) {
+    for (size_t j = 0; j < points.size(); j++) {
       long x1 = point.first;
       long x2 = points[j].first;
 
